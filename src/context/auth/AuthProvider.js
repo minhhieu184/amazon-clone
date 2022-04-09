@@ -29,8 +29,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const initProfile = async () => {
             const profileRes = await getDocument('profiles', currentUser.uid)
-            console.log("initProfile ~ profileRes", profileRes)
-            setProfile(profileRes)
+            setProfile({uid: currentUser.uid, ...profileRes})
         }
         currentUser && initProfile()
     }, [currentUser])

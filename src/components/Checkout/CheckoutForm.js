@@ -38,6 +38,7 @@ const CheckoutForm = () => {
             },
             items: cart
         }
+        console.log("submitHandler ~ profile", profile)
         const isSuccess = await addDocArray('orders', profile.uid, order)
         if(isSuccess){
             dispatch(cartActions.resetCart())

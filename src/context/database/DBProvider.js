@@ -121,10 +121,14 @@ const DBProvider = ({ children }) => {
     }
 
     const addDocArray = async (collectionID, docID, value) => {
+    console.log("addDocArray ~ docID", docID)
+    console.log("addDocArray ~ collectionID", collectionID)
         let isSuccess = true
         prepareState()
         const docRef = doc(db, collectionID, docID)
         try {
+            console.log(1);
+
             const docSnap = await getDoc(docRef)
             if(!docSnap.exists()){
             console.log(123);

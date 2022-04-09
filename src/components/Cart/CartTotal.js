@@ -1,11 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../context/auth/authContext';
 
 const CartTotal = ({ totalPrice, totalQuantity }) => {
     const history = useHistory()
+    const { currentUser } = useAuth()
 
     const navigateHandler = () => {
-        history.push('/checkout')
+        currentUser && history.push('/checkout')
+        !currentUser && history.push('/auth')
     }
 
     return (
