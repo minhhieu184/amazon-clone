@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const FadeInAnimate = ({ children, from, delayStart, ...props }) => {
+const FadeInAnimate = ({ children, from, delayStart=0, ...props }) => {
     const pageVariants = {
         initial: {
             opacity: 0,

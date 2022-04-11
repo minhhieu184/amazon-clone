@@ -34,8 +34,10 @@ const OrderHistory = () => {
     }
 
     const removeHandler = (index) => {
-        const newOrders = [...orders]
+    console.log("removeHandler ~ index", index)
+        const newOrders = [...orderFilted]
         newOrders.splice(index, 1)
+        console.log("removeHandler ~ newOrders", newOrders)
         setOrders(newOrders)
     }
 

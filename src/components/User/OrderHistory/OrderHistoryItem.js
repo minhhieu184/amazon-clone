@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import OrderHistoryProductItem from './OrderHistoryProductItem';
 
 const OrderHistoryItem = ({ order, index, onRemove }) => {
+    console.log("OrderHistoryItem ~ index", index)
     console.log("OrderHistoryItem ~ order", order)
     const [isShow, setIsShow] = useState(false);
     const totalPrice = order.items.reduce((prevTotal, item) => prevTotal + item.price * item.quantity, 0).toFixed(2);
@@ -16,6 +17,11 @@ const OrderHistoryItem = ({ order, index, onRemove }) => {
 
     const toggleHandler = () => {
         setIsShow(prev => !prev)
+    }
+
+    const removeHandler = e => {
+        e.stopPropagation()
+        onRemove(index)
     }
 
     const formatTime = value => {
@@ -39,14 +45,17 @@ const OrderHistoryItem = ({ order, index, onRemove }) => {
                 </div>
                 <div className="grow text-right flex flex-col justify-between items-end">
                     <p className="text-sm font-semibold">{day}/{month}/{year}</p>
-                    <button onClick={() => onRemove(index)} className="text-sm font-semibold text-orange-500 px-2 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-500 hover:text-white ">Delete</button>
+                    <button onClick={removeHandler} className="text-sm font-semibold text-orange-500 px-2 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-500 hover:text-white ">Delete</button>
                 </div>
             </li>
 
             <AnimatePresence>
                 {isShow &&
                     <Modal isShow={isShow} toggleHandler={toggleHandler}>
-                        <div className="bg-white w-[800px] h-[500px] p-6 rounded-lg flex">
+                        <div className="bg-white w-[800px] h-[500px] p-6 rounded-lg flex relative">
+                            <button onClick={toggleHandler} className="absolute top-0 right-0 font-medium text-4xl text-white bg-red-600 rounded-tr-lg hover:opacity-90">
+                                <span className="block px-2 ease-linear duration-150 transition-all hover:scale-125">&times;</span>
+                            </button>
                             <div className="flex flex-col w-1/2 mr-3">
                                 <ul className="grow overflow-y-auto pr-3">
                                     {order.items.map(item => <OrderHistoryProductItem key={item.id} item={item} />)}
@@ -73,7 +82,7 @@ const OrderHistoryItem = ({ order, index, onRemove }) => {
                                         <span className="text-base font-medium">{`${formatTime(hours)}:${formatTime(minutes)} - ${formatTime(day)}/${formatTime(month)}/${year}`}</span>
                                     </div>
                                 </div>
-                                <button onClick={() => onRemove(index)} className="ml-auto block mt-4 text-orange-600 font-medium px-3 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-600 hover:text-white">Delete</button>
+                                <button onClick={removeHandler} className="ml-auto block mt-4 text-orange-600 font-medium px-3 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-600 hover:text-white">Delete</button>
                             </div>
                         </div>
                     </Modal>
