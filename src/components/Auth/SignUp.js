@@ -7,6 +7,7 @@ import { useDatabase } from '../../context/database/databaseContext';
 import ModalLoadingSpinner from '../UI/ModalLoadingSpinner';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
+import { motion } from 'framer-motion';
 
 const INITIAL_SIGNUP = {
     name: '',
@@ -29,12 +30,27 @@ const VALIDATION_SIGNUP = Yup.object({
     phone: Yup.string().matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'Must be a phone number')
 })
 
+const signupVariants = {
+    initial: {
+        opacity: 0,
+        x: 300
+    },
+    animate: {
+        opacity: 1,
+        x: 0,
+    },
+    exit: {
+        opacity: 1,
+        x: -300,
+    }
+}
+
 const SignUp = ({ toggle }) => {
     const history = useHistory()
-    const { currentUser, signup, isLoading, error, resetState } = useAuth()
+    const { signup, isLoading, error, resetState } = useAuth()
     const { setDocument, isLoading: setLoading } = useDatabase()
 
-    const submitHandler = async (values, onSubmitProps) => {
+    const submitHandler = async values => {
         const res = await signup(values.email, values.password)
         const { password, confirmPassword, ...profile } = values
         await setDocument('profiles', res.user.uid, profile)
@@ -45,7 +61,14 @@ const SignUp = ({ toggle }) => {
     }, [])
 
     return (
-        <div className="max-w-[350px] mx-auto">
+        <motion.div
+            className="max-w-[350px] mx-auto min-h-screen overflow-auto"
+            variants={signupVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            key="key2"
+        >
             <img onClick={() => history.push('/')} className="w-32 mx-auto my-2 cursor-pointer" src="https://investment-day-assets.sgp1.digitaloceanspaces.com/startupwheel/2021/04/19165313/uc-9-1536x646.png" alt="logo-image" />
             <div className="w-full rounded-lg px-7 py-5 border-solid border-[1px] border-gray-300">
                 <h1 className="text-2xl mb-4 font-medium">Sign-Up</h1>
@@ -101,7 +124,7 @@ const SignUp = ({ toggle }) => {
             </p>
             {(isLoading || setLoading) && <ModalLoadingSpinner />}
 
-        </div>
+        </motion.div>
 
 
     );

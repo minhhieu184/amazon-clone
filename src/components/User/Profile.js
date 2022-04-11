@@ -34,7 +34,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <Section title="Your Profile">
+        <Section key="profile" title="Your Profile">
             {isDBCompleted && <p className="text-sm text-green-500 font-semibold mb-2">Change profile successfully</p>}
             {(error || dbError) && <p className="text-sm text-red-500 font-semibold mb-2">Cannot change your profile. Try again.</p>}
             <Formik
@@ -67,7 +67,7 @@ const Profile = () => {
                     <button type="submit" className="bg-orange-500 text-white font-medium block py-[10px] rounded-md w-full max-w-[10rem] mx-auto text-[13px] mt-4 outline-none hover:opacity-80">Update</button>
                 </Form>
             </Formik>
-                {(isLoading || isDBLoading)&& <ModalLoadingSpinner />}
+            {(isLoading || isDBLoading) && <ModalLoadingSpinner />}
         </Section>
     );
 }

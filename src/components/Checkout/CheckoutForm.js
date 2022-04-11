@@ -10,6 +10,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import ModalLoadingSpinner from '../UI/ModalLoadingSpinner';
 import NotificationCard from '../UI/NotificationCard';
+import Modal from '../UI/Modal';
 
 const VALIDATION_CHECKOUT = Yup.object({
     name: Yup.string().required('Enter name')
@@ -86,9 +87,9 @@ const CheckoutForm = () => {
             </Formik>
             {isLoading && <ModalLoadingSpinner />}
             {isCompleted &&
-                <div className="absolute z-10 top-0 bottom-0 left-0 right-0 bg-[#64646440] flex justify-center items-center">
+                <Modal isShow>
                     <NotificationCard type="success" message="Your order has been completed" />
-                </div>}
+                </Modal>}
         </div>
     );
 }

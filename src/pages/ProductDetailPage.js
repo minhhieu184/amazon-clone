@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDatabase } from '../context/database/databaseContext';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
-import CategoryNav from '../components/CategoryNav';
 import ProductDetail from '../components/Product/ProductDetail';
 import Footer from '../components/Footer';
 
@@ -23,7 +22,7 @@ const ProductDetailPage = () => {
     }, [])
 
     return (
-        <div className="bg-[#e8ecef] overflow-auto min-h-[100vh]">
+        <div className="bg-[#e8ecef] overflow-auto">
             <Header categoryNav />
             <ProductDetail product={product} />
             <Footer />

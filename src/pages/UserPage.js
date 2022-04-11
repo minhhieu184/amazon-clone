@@ -1,18 +1,16 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { useAuth } from '../context/auth/authContext';
-import { updateProfile } from "firebase/auth";
 
 import Header from '../components/Header';
 import User from '../components/User/User';
 import Footer from '../components/Footer';
-import OrderHistory from '../components/User/OrderHistory';
+import OrderHistory from '../components/User/OrderHistory/OrderHistory';
 import Profile from '../components/User/Profile';
 import ChangePassword from '../components/User/ChangePassword';
 
 const UserPage = () => {
     return (
-        <div className="">
+        <>
             <Header />
             <div className="max-w-5xl mx-auto mt-32 flex">
                 <User />
@@ -21,7 +19,7 @@ const UserPage = () => {
                 <Route path="/user/changepassword" component={ChangePassword} />
             </div>
             <Footer />
-        </div>
+        </>
     );
 }
 

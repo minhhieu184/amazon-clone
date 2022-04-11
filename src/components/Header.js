@@ -48,7 +48,7 @@ const Header = ({ categoryNav }) => {
                     <ul className="user-nav">
                         <Link to='/user/profile' className="header-user-subnav-item">Manage Acount</Link>
                         <Link to='/user/order' className="header-user-subnav-item">Your order</Link>
-                        <Link to='/user/chengepassword' className="header-user-subnav-item">Change password</Link>
+                        <Link to='/user/changepassword' className="header-user-subnav-item">Change password</Link>
                         <button onClick={logout} className="header-user-subnav-item text-left">Log out</button>
                     </ul>
                 </div>}

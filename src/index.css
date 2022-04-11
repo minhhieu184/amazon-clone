@@ -14,6 +14,7 @@ html {
 }
 
 @layer components {
+    /* Header */
     .header-nav {
         @apply cursor-pointer flex flex-col px-3;
     }
@@ -21,15 +22,17 @@ html {
         @apply text-gray-800 text-xs w-28 block py-[2px] cursor-pointer hover:text-orange-500 hover:underline;
     }
 
+    /* Sub Nav */
     .user-nav {
         @apply p-2 w-fit bg-white rounded-md absolute z-40 opacity-0 translate-y-[20px] left-0 top-0 shadow-md 
             transition-all duration-200 ease-in pointer-events-none
-            before:absolute before:h-3 before:-top-3 before:left-0 before:right-0
+            before:absolute before:h-3 before:-top-3 before:left-0 before:right-0;
     }
     .show-nav .user-nav {
-        @apply pointer-events-auto opacity-100 translate-y-[50px]
+        @apply pointer-events-auto opacity-100 translate-y-[50px];
     }
 
+    /* Category */
     .categoty-link {
         @apply h-10 px-3 block leading-10 text-white font-normal text-sm transition-all duration-100 ease-linear hover:bg-[#384b64];
     }
@@ -40,18 +43,21 @@ html {
         @apply font-medium text-orange-500;
     }
 
+    /* Home  */
     .md-home-product {
         @apply grid gap-4 grid-cols-4;
     }
+
+    /* Product detail */
     .product-detail-slider .swiper-pagination-bullet-active {
         @apply bg-orange-500;
     }
-
     .product-detail-quantity input::-webkit-outer-spin-button,
     .product-detail-quantity input::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
 
+    /* Auth form */
     .auth-form-label {
         @apply text-[13px] font-semibold block cursor-pointer;
     }
@@ -62,10 +68,33 @@ html {
         @apply text-xs text-red-500;
     }
 
+    /* footer */
     .footer-subtitle {
         @apply text-base font-medium mb-3;
     }
     .footer-link {
         @apply text-[13px] block font-normal my-1 hover:underline;
     }
+
+    .historyItem-enter {
+        @apply opacity-0 -translate-y-10;
+    }
+    .historyItem-enter-active {
+        @apply opacity-100 translate-y-0;
+    }
+}
+
+
+/* Order History */
+.historyItem-enter {
+    opacity: 0;
+    transform: translateY(40px);
+}
+.historyItem-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.historyItem-exit {
+    opacity: 0;
+    transform: translateY(40px);
 }

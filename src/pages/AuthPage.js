@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FadeInAnimate from '../components/UI/FadeInAnimate';
+
 import SignIn from '../components/Auth/SignIn';
 import SignUp from '../components/Auth/SignUp';
 
@@ -11,10 +13,10 @@ const AuthPage = () => {
     }
 
     return (
-        <div>
+        <FadeInAnimate key="auth" from="left">
             {isSignedIn && <SignIn toggle={toggleHandler} />}
             {!isSignedIn && <SignUp toggle={toggleHandler} />}
-        </div>
+        </FadeInAnimate>
     );
 }
 

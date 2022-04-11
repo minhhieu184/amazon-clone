@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ModalLoadingSpinner from '../UI/ModalLoadingSpinner';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
+import { motion } from 'framer-motion';
 
 const INITIAL_SIGNIN = {
     email: '',
@@ -17,6 +18,20 @@ const VALIDATION_SIGNIN = Yup.object({
         .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,14}$/, "7-14 characters, at least one letter, one number and one special character"),
 })
 
+const signinVariants = {
+    initial: {
+        opacity: 0,
+        x: 300
+    },
+    animate: {
+        opacity: 1,
+        x: 0,
+    },
+    exit: {
+        opacity: 0,
+        x: -300,
+    }
+}
 
 const SignIn = ({ toggle }) => {
     const history = useHistory()
@@ -34,7 +49,14 @@ const SignIn = ({ toggle }) => {
 
 
     return (
-        <div className="max-w-[350px] mx-auto">
+        <motion.div
+            className="max-w-[350px] mx-auto min-h-screen overflow-auto"
+            variants={signinVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            key="key1"
+        >
             <img onClick={() => history.push('/')} className="w-32 mx-auto my-2 cursor-pointer" src="https://investment-day-assets.sgp1.digitaloceanspaces.com/startupwheel/2021/04/19165313/uc-9-1536x646.png" alt="logo-image" />
             <div className="w-full rounded-lg px-7 py-5 border-solid border-[1px] border-gray-300">
                 <h1 className="text-2xl mb-4 font-medium">Sign-In</h1>
@@ -64,7 +86,7 @@ const SignIn = ({ toggle }) => {
             <p className="text-xs text-center my-10 ">New to Amazon?</p>
             <button onClick={toggle} className="bg-[#dfe2e8] py-1 w-full border-solid border-[1px] border-gray-400 rounded-lg text-[13px] hover:opacity-80">Create your Amazon account</button>
             {isLoading && <ModalLoadingSpinner />}
-        </div>
+        </motion.div>
     );
 }
 

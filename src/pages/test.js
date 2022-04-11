@@ -3,7 +3,6 @@ import { useDatabase } from '../context/database/databaseContext';
 
 
 const Test = () => {
-
     const nameRef = useRef()
     const priceRef = useRef()
     const voteRef = useRef()

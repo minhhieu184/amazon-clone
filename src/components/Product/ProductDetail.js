@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cartSlide';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
+import { Pagination } from "swiper";
 import HomeSlideButton from '../Home/HomeSlide/HomeSlideButton';
 import { UilStar } from '@iconscout/react-unicons'
 import { UilShoppingCart } from '@iconscout/react-unicons'
+import FadeInAnimate from '../UI/FadeInAnimate';
 
 import "swiper/css/pagination";
 const ProductDetail = ({ product }) => {
-console.log("ProductDetail ~ product", product)
+    console.log("ProductDetail ~ product", product)
     const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1);
 
@@ -30,10 +31,10 @@ console.log("ProductDetail ~ product", product)
     }
 
     return (
-        <>
+        <FadeInAnimate from="left" delayStart={0.5} className="mt-36 flex max-w-[1200px] mx-auto min-h-screen">
             {Object.keys(product).length !== 0 &&
-                <div className="mt-36 flex max-w-[1200px] mx-auto">
-                    <div className="w-1/2 rounded-xl bg-white product-detail-slider">
+                <>
+                    <div className="w-1/2 rounded-xl bg-white product-detail-slider h-fit">
                         <Swiper
                             pagination={{
                                 dynamicBullets: true
@@ -64,10 +65,10 @@ console.log("ProductDetail ~ product", product)
                         <div className="text-right">
                             <div className="my-1 flex justify-end product-detail-quantity">
                                 <button onClick={decreaseHandler} className="w-6 rounded-md bg-gray-300 flex justify-center items-center">-</button>
-                                <input 
-                                    className="w-16 text-center border-solid border-[1px] mx-2 rounded-md outline-none focus:border-orange-300" 
-                                    type="number" 
-                                    value={quantity} 
+                                <input
+                                    className="w-16 text-center border-solid border-[1px] mx-2 rounded-md outline-none focus:border-orange-300"
+                                    type="number"
+                                    value={quantity}
                                     onChange={e => setQuantity(e.target.value)}
                                     onBlur={e => {
                                         const value = e.target.value
@@ -80,11 +81,11 @@ console.log("ProductDetail ~ product", product)
                                 />
                                 <button onClick={increaseHandler} className="w-6 rounded-md bg-gray-300 flex justify-center items-center">+</button>
                             </div>
-                            <button 
+                            <button
                                 className="ml-auto flex text-sm font-semibold bg-orange-400 px-4 py-2 mt-4 rounded-lg text-white transition-all duration-100 ease-linear hover:opacity-90"
                                 onClick={addToCartHandler}
                             >
-                                <UilShoppingCart size="20" color="#ffd53c" /> 
+                                <UilShoppingCart size="20" color="#ffd53c" />
                                 Add to cart
                             </button>
                             <div className="text-left mt-8 border-t border-gray-200 py-4">
@@ -97,10 +98,9 @@ console.log("ProductDetail ~ product", product)
                                 </ul>
                             </div>
                         </div>
-
                     </div>
-                </div>}
-        </>
+                </>}
+        </FadeInAnimate>
     );
 }
 

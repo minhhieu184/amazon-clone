@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import FadeInAnimate from '../UI/FadeInAnimate';
+
 import CartList from './CartList';
 import CartTotal from './CartTotal';
-import { useSelector } from 'react-redux';
 
 
 const Cart = () => {
@@ -11,10 +13,10 @@ const Cart = () => {
     const totalQuantity = cart.reduce((preTotal, item) => preTotal + item.quantity, 0)
 
     return (
-        <section className="w-full max-w-[1200px] mx-auto my-24 flex">
+        <FadeInAnimate from="left" className="w-full max-w-[1200px] mx-auto my-24 flex">
             <CartList cart={cart} isEmpty={isEmpty} totalPrice={totalPrice} totalQuantity={totalQuantity}/>
             {!isEmpty && <CartTotal totalPrice={totalPrice} totalQuantity={totalQuantity} />}
-        </section>
+        </FadeInAnimate>
     );
 }
 

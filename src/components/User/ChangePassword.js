@@ -29,7 +29,7 @@ const ChangePassword = () => {
     }, [])
 
     return (
-        <Section title="Change Password">
+        <Section key="changePassword" title="Change Password">
             {isCompleted && <p className="text-sm text-green-500 font-semibold mb-2">Change password successfully</p>}
             {error && <p className="text-sm text-red-500 font-semibold mb-2">Cannot change your password. Try again.</p>}
             <Formik
