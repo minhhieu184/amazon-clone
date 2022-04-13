@@ -53,7 +53,7 @@ const ProductDetail = ({ product }) => {
                                 iconClassName="text-sm " />
                         </Swiper>
                     </div>
-                    <div className="grow rounded-xl bg-white ml-10 p-5">
+                    <div className="grow rounded-xl bg-white ml-10 p-5 h-fit">
                         <h2 className="text-2xl font-medium">{product.name}</h2>
                         <div className="flex mt-4">
                             {[...Array(product.vote).keys()].map(index => <UilStar key={index} size="14" color="#f6c327" />)}

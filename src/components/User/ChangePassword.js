@@ -43,12 +43,12 @@ const ChangePassword = () => {
                 <Form>
                     <div className="mb-2">
                         <label className="auth-form-label text-sm mb-1" htmlFor="password">New password</label>
-                        <Field className="auth-form-field text-sm" id="password" type="text" name="password" />
+                        <Field className="auth-form-field text-sm" id="password" type="password" name="password" />
                         <ErrorMessage name="password" component="p" className="auth-form-error" />
                     </div>
                     <div className="mb-2">
                         <label className="auth-form-label text-sm mb-1" htmlFor="confirmPassword">Confirm password</label>
-                        <Field className="auth-form-field" id="confirmPassword" type="text" name="confirmPassword" />
+                        <Field className="auth-form-field" id="confirmPassword" type="password" name="confirmPassword" />
                         <ErrorMessage name="confirmPassword" component="p" className="auth-form-error" />
                     </div>
                     <button disabled={isLoading} type="submit" className="bg-orange-500 text-white font-medium block py-[10px] rounded-md w-full max-w-[10rem] mx-auto text-[13px] mt-4 outline-none hover:opacity-80">Change</button>

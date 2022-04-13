@@ -41,7 +41,7 @@ const CheckoutForm = () => {
         }
         console.log("submitHandler ~ profile", profile)
         const isSuccess = await addDocArray('orders', profile.uid, order)
-        if(isSuccess){
+        if (isSuccess) {
             dispatch(cartActions.resetCart())
             setTimeout(() => {
                 history.push('/')
@@ -86,10 +86,9 @@ const CheckoutForm = () => {
                 </Form>
             </Formik>
             {isLoading && <ModalLoadingSpinner />}
-            {isCompleted &&
-                <Modal isShow>
-                    <NotificationCard type="success" message="Your order has been completed" />
-                </Modal>}
+            <Modal isShow={isCompleted}>
+                <NotificationCard type="success" message="Your order has been completed" />
+            </Modal>
         </div>
     );
 }

@@ -49,45 +49,41 @@ const OrderHistoryItem = ({ order, index, onRemove }) => {
                 </div>
             </li>
 
-            <AnimatePresence>
-                {isShow &&
-                    <Modal isShow={isShow} toggleHandler={toggleHandler}>
-                        <div className="bg-white w-[800px] h-[500px] p-6 rounded-lg flex relative">
-                            <button onClick={toggleHandler} className="absolute top-0 right-0 font-medium text-4xl text-white bg-red-600 rounded-tr-lg hover:opacity-90">
-                                <span className="block px-2 ease-linear duration-150 transition-all hover:scale-125">&times;</span>
-                            </button>
-                            <div className="flex flex-col w-1/2 mr-3">
-                                <ul className="grow overflow-y-auto pr-3">
-                                    {order.items.map(item => <OrderHistoryProductItem key={item.id} item={item} />)}
-                                </ul>
-                                <p className="text-sm mt-3 mb-1 ml-auto mr-6">
-                                    Total:
-                                    <span className="text-base font-semibold"> ${totalPrice}</span>
-                                </p>
-                            </div>
-                            <div className="grow">
-                                <h3 className="text-xl font-semibold">Order detail</h3>
-                                <div className="text-xs mt-4">
-                                    <div>
-                                        <span className="w-32 inline-block">Name:</span>
-                                        <span className="text-base font-medium">{order.infor.name}</span></div>
-                                    <div>
-                                        <span className="w-32 inline-block">Phone:</span>
-                                        <span className="text-base font-medium">{order.infor.phone}</span></div>
-                                    <div>
-                                        <span className="w-32 inline-block">Shipping address:</span>
-                                        <span className="text-base font-medium">{order.infor.address}</span></div>
-                                    <div>
-                                        <span className="w-32 inline-block">Created At:</span>
-                                        <span className="text-base font-medium">{`${formatTime(hours)}:${formatTime(minutes)} - ${formatTime(day)}/${formatTime(month)}/${year}`}</span>
-                                    </div>
-                                </div>
-                                <button onClick={removeHandler} className="ml-auto block mt-4 text-orange-600 font-medium px-3 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-600 hover:text-white">Delete</button>
+            <Modal isShow={isShow} toggleHandler={toggleHandler}>
+                <div className="bg-white w-[800px] h-[500px] p-6 rounded-lg flex relative">
+                    <button onClick={toggleHandler} className="absolute top-0 right-0 font-medium text-4xl text-white bg-red-600 rounded-tr-lg hover:opacity-90">
+                        <span className="block px-2 ease-linear duration-150 transition-all hover:scale-125">&times;</span>
+                    </button>
+                    <div className="flex flex-col w-1/2 mr-3">
+                        <ul className="grow overflow-y-auto pr-3">
+                            {order.items.map(item => <OrderHistoryProductItem key={item.id} item={item} />)}
+                        </ul>
+                        <p className="text-sm mt-3 mb-1 ml-auto mr-6">
+                            Total:
+                            <span className="text-base font-semibold"> ${totalPrice}</span>
+                        </p>
+                    </div>
+                    <div className="grow">
+                        <h3 className="text-xl font-semibold">Order detail</h3>
+                        <div className="text-xs mt-4">
+                            <div>
+                                <span className="w-32 inline-block">Name:</span>
+                                <span className="text-base font-medium">{order.infor.name}</span></div>
+                            <div>
+                                <span className="w-32 inline-block">Phone:</span>
+                                <span className="text-base font-medium">{order.infor.phone}</span></div>
+                            <div>
+                                <span className="w-32 inline-block">Shipping address:</span>
+                                <span className="text-base font-medium">{order.infor.address}</span></div>
+                            <div>
+                                <span className="w-32 inline-block">Created At:</span>
+                                <span className="text-base font-medium">{`${formatTime(hours)}:${formatTime(minutes)} - ${formatTime(day)}/${formatTime(month)}/${year}`}</span>
                             </div>
                         </div>
-                    </Modal>
-                }
-            </AnimatePresence>
+                        <button onClick={removeHandler} className="ml-auto block mt-4 text-orange-600 font-medium px-3 py-1 rounded-lg transition-all duration-100 ease-linear hover:bg-orange-600 hover:text-white">Delete</button>
+                    </div>
+                </div>
+            </Modal>
         </>
     );
 }

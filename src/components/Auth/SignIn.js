@@ -75,7 +75,7 @@ const SignIn = ({ toggle }) => {
                         </div>
                         <div className="mb-2">
                             <label className="auth-form-label" htmlFor="password">Password</label>
-                            <Field className="auth-form-field" id="password" type="text" name="password" />
+                            <Field className="auth-form-field" id="password" type="password" name="password" />
                             <ErrorMessage name="password" component="p" className="auth-form-error" />
                         </div>
                         <button disabled={isLoading} type="submit" className="bg-[#f1c75e] block py-1 rounded-lg w-full text-[13px] mt-4 outline-none border-solid border-[1px] border-gray-400 hover:opacity-80">Sign-Up</button>

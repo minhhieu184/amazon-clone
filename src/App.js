@@ -48,7 +48,7 @@ const App = () => {
 
     useEffect(() => {
         !isInitCart && currentUser && setDocument('cart', currentUser.uid, cart)
-    }, [cart, isInitCart, currentUser])
+    }, [cart, isInitCart, currentUser]) 
 
     return (
         <AnimatePresence exitBeforeEnter>

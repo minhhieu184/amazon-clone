@@ -92,12 +92,12 @@ const SignUp = ({ toggle }) => {
                         </div>
                         <div className="mb-2">
                             <label className="auth-form-label" htmlFor="password">Password</label>
-                            <Field className="auth-form-field" id="password" type="text" name="password" />
+                            <Field className="auth-form-field" id="password" type="password" name="password" />
                             <ErrorMessage name="password" component="p" className="auth-form-error" />
                         </div>
                         <div className="mb-2">
                             <label className="auth-form-label" htmlFor="confirmPassword">ConfirmPassword</label>
-                            <Field className="auth-form-field" id="confirmPassword" type="text" name="confirmPassword" />
+                            <Field className="auth-form-field" id="confirmPassword" type="password" name="confirmPassword" />
                             <ErrorMessage name="confirmPassword" component="p" className="auth-form-error" />
                         </div>
                         <div className="mb-2">

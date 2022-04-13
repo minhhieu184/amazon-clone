@@ -33,24 +33,26 @@ const Modal = ({ children, toggleHandler, isShow }) => {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(
-                <>
-                    {isShow && <motion.div
-                        onClick={toggleHandler}
-                        className="fixed z-50 top-0 right-0 left-0 bottom-0 bg-[#33333366]"
-                        variants={overlayVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="initial"
-                    >
-                        <motion.div 
-                            onClick={e => e.stopPropagation()} 
-                            className="absolute z-[100] top-1/2 left-1/2"
-                            variants={modalVariants}
+                <AnimatePresence>
+                    {isShow &&
+                        <motion.div
+                            onClick={toggleHandler}
+                            className="fixed z-50 top-0 right-0 left-0 bottom-0 bg-[#33333366]"
+                            variants={overlayVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="initial"
                         >
-                            {children}
+                            <motion.div
+                                onClick={e => e.stopPropagation()}
+                                className="absolute z-[100] top-1/2 left-1/2"
+                                variants={modalVariants}
+                            >
+                                {children}
+                            </motion.div>
                         </motion.div>
-                    </motion.div>}
-                </>
+                    }
+                </AnimatePresence>
                 , document.getElementById('modal'))}
         </React.Fragment>
     );
